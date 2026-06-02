@@ -15,6 +15,8 @@
   html, body, #root { height: 100%; margin: 0; padding: 0; }
   body { background: #eef1f5; font-family: 'Inter', sans-serif; }
   * { box-sizing: border-box; }
+  body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+  img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
 </style>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -33,6 +35,34 @@
 
 <script type="text/babel" data-presets="env,react">
 ReactDOM.createRoot(document.getElementById('root')).render(<window.V2App />);
+</script>
+
+<script>
+(function() {
+  // Clic derecho desactivado
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
+  // Atajos de teclado bloqueados
+  document.addEventListener('keydown', function(e) {
+    var k = e.key || e.keyCode;
+    // F12
+    if (k === 'F12' || k === 123) { e.preventDefault(); return; }
+    // Ctrl/Cmd + combinaciones
+    if (e.ctrlKey || e.metaKey) {
+      var blocked = ['u','U','s','S','a','A','p','P','j','J','i','I','c','C'];
+      if (blocked.indexOf(e.key) !== -1) {
+        // Ctrl+A solo bloqueado fuera de inputs/textarea
+        if ((e.key === 'a' || e.key === 'A') && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
+        e.preventDefault();
+      }
+      // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
+      if (e.shiftKey && ['i','I','j','J','c','C'].indexOf(e.key) !== -1) { e.preventDefault(); }
+    }
+  });
+
+  // Drag de imágenes bloqueado
+  document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+})();
 </script>
 </body>
 </html>
