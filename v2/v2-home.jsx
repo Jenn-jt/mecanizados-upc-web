@@ -428,7 +428,7 @@ function Home({ setPage, openProduct }) {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 240px), 1fr))',
             gap: 24,
           }}>
             {featured.map(p => (
@@ -696,7 +696,7 @@ function Home({ setPage, openProduct }) {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
             gap: 32,
           }}>
             {[
@@ -864,7 +864,7 @@ function Home({ setPage, openProduct }) {
           {/* Grid de contadores con efecto wow */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
             gap: 24,
             marginBottom: 100,
           }}>

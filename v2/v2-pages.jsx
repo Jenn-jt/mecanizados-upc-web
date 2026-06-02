@@ -114,7 +114,7 @@ function V2_Services({ setPage }) {
         <div style={{
           maxWidth: 1280, margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
           gap: 24,
         }}>
           {svcDetail.map((s) => (
@@ -548,7 +548,7 @@ function V2_Products({ openProduct }) {
           ) : (
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
               gap: 20,
             }}>
               {visibleItems.map(p => (
@@ -817,7 +817,7 @@ function V2_About({ setPage }) {
       <section style={{ padding: '100px 40px', background: 'var(--bg)' }}>
         <div style={{
           maxWidth: 1280, margin: '0 auto',
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64,
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 'clamp(32px, 5vw, 64px)',
           alignItems: 'center',
         }}>
           <div className="reveal" style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', background: 'var(--accent-deep)' }}>
@@ -922,7 +922,7 @@ function V2_About({ setPage }) {
             </h2>
           </div>
           <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20,
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 20,
           }}>
             {D1.certifications.map((c, i) => (
               <div key={c} className="reveal" style={{
@@ -973,7 +973,7 @@ function V2_About({ setPage }) {
             </p>
           </div>
           <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20,
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 20,
           }}>
             {disciplines.map((d) => (
               <div key={d.name} className="reveal" style={{
@@ -1114,7 +1114,7 @@ function V2_Contact() {
       <div className="section" style={{ minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
         <div className="reveal" style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
           <div className="mono" style={{ color: 'var(--accent-text)', marginBottom: 30 }}>— Recibido —</div>
-          <h2 className="section-title" style={{ fontSize: 96, marginBottom: 32 }}>Gracias.</h2>
+          <h2 className="section-title" style={{ fontSize: 'clamp(56px, 14vw, 96px)', marginBottom: 32 }}>Gracias.</h2>
           <p style={{ fontFamily: "'Newsreader', serif", fontWeight: 300, fontSize: 26, color: 'var(--ink-soft)', lineHeight: 1.4, marginBottom: 40 }}>
             Hemos recibido tu consulta. Nuestro equipo técnico responderá en las próximas 24 horas.
           </p>
