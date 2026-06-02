@@ -45,6 +45,7 @@ function useParallax(scrollRef) {
 
 /* ===== NAV ===== */
 function Nav({ page, setPage }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const links = [
     { id: 'home', label: 'Inicio' },
     { id: 'services', label: 'Servicios' },
@@ -52,15 +53,16 @@ function Nav({ page, setPage }) {
     { id: 'about', label: 'Empresa' },
     { id: 'contact', label: 'Contacto' },
   ];
+  const go = (id) => { setPage(id); setMenuOpen(false); };
   return (
     <nav className="nav">
       <div className="nav-inner">
-        <div className="nav-logo" onClick={() => setPage('home')}>
+        <div className="nav-logo" onClick={() => go('home')}>
           Mecanizados<em>UPC</em>
         </div>
         <div className="nav-links">
           {links.map(l => (
-            <div key={l.id} className={`nav-link ${page === l.id ? 'active' : ''}`} onClick={() => setPage(l.id)}>
+            <div key={l.id} className={`nav-link ${page === l.id ? 'active' : ''}`} onClick={() => go(l.id)}>
               {l.label}
             </div>
           ))}
@@ -69,7 +71,19 @@ function Nav({ page, setPage }) {
           <span className="dot" />
           <span>Taller operativo · Rubí</span>
         </div>
+        <button className={`nav-burger ${menuOpen ? 'is-open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menú">
+          <span /><span /><span />
+        </button>
       </div>
+      {menuOpen && (
+        <div className="nav-mobile">
+          {links.map(l => (
+            <div key={l.id} className={`nav-mobile-link ${page === l.id ? 'active' : ''}`} onClick={() => go(l.id)}>
+              {l.label}
+            </div>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
